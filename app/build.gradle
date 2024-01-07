@@ -1,0 +1,101 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+    id 'androidx.navigation.safeargs'
+    id 'com.google.devtools.ksp'
+}
+
+android {
+    namespace 'com.poc.photosapp'
+    compileSdk libs.versions.targetSDK.get().toInteger()
+
+    defaultConfig {
+        applicationId "com.poc.photosapp"
+        minSdk libs.versions.minimumSDK.get().toInteger()
+        targetSdk libs.versions.targetSDK.get().toInteger()
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+}
+
+dependencies {
+
+    implementation libs.ktx
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.constraintlayout
+    implementation libs.navigation.fragment.ktx
+    implementation libs.navigation.ui.ktx
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+
+    // HILT
+    implementation libs.hiltAndroid
+    kapt libs.hiltCompiler
+
+    // Retrofit
+    implementation libs.retrofit
+    implementation libs.converter.gson
+    implementation(libs.retrofit2.kotlinx.serialization.converter)
+
+    implementation libs.lifecycle.livedata.ktx
+    implementation libs.lifecycle.viewmodel.ktx
+    implementation libs.lifecycle.runtime.ktx
+
+
+    implementation libs.glide
+    ksp libs.compiler
+
+    // chucker
+    implementation libs.library
+
+    def room_version = "2.6.1"
+    //Room Database
+    implementation (libs.room.common)
+    implementation (libs.room.runtime)
+    implementation (libs.room.ktx)
+    ksp ("androidx.room:room-compiler:$room_version")
+
+    // facebook shimmer
+    implementation libs.shimmer
+
+    // lottie
+    implementation libs.lottie
+
+    //timber
+    implementation libs.timber
+
+}
+// Allow references to generated code
+kapt {
+    correctErrorTypes true
+}

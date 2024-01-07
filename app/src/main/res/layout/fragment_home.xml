@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="resource"
+            type="com.poc.photosapp.utilities.Resource" />
+
+        <variable
+            name="retry"
+            type="com.poc.photosapp.presentation.ui.interfaces.RetryCallBack" />
+
+        <import type="com.poc.photosapp.utilities.Status" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.ui.activities.MainActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorTransparentBackground"
+            android:elevation="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="@string/str_home"
+            app:titleTextColor="@android:color/white"/>
+
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:visibleGone="@{resource.status == Status.LOADING}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include layout="@layout/layout_shimmer_placeholder" />
+
+                <include layout="@layout/layout_shimmer_placeholder" />
+
+                <include layout="@layout/layout_shimmer_placeholder" />
+
+                <include layout="@layout/layout_shimmer_placeholder" />
+
+                <include layout="@layout/layout_shimmer_placeholder" />
+
+                <include layout="@layout/layout_shimmer_placeholder" />
+            </LinearLayout>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            tools:listitem="@layout/card_item" />
+
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lav_loader"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loading_indicator"
+            app:visibleGone="@{resource.status == Status.LOADING}"
+            tools:visibility="visible" />
+
+
+        <include
+            layout="@layout/layout_no_data_found"
+            android:visibility="gone"
+            app:showIfSuccessAndListEmpty="@{resource}" />
+
+
+        <include
+            android:id="@+id/layout_api_error"
+            layout="@layout/layout_api_error"
+            android:visibility="gone"
+            app:retryAction="@{retry}" />
+
+
+        <include
+            android:id="@+id/layout_no_internet"
+            layout="@layout/layout_no_internet"
+            android:visibility="gone"
+            app:retryAction="@{retry}" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+
+

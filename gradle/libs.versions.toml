@@ -1,0 +1,63 @@
+[versions]
+androidx-junit = "1.1.5"
+compiler = "4.12.0"
+constraintlayout = "2.1.4"
+appcompat = "1.6.1"
+converterGson = "2.9.0"
+core-ktx-version = "1.12.0"
+androidLib = "8.2.1"
+espressoCore = "3.5.1"
+glide = "4.16.0"
+junit = "4.13.2"
+library = "4.0.0"
+lifecycleRuntimeKtx = "2.6.2"
+lifecycleViewmodelKtx = "2.6.2"
+lifecycleLivedataKtx = "2.6.2"
+lottie = "6.2.0"
+navigationUiKtx = "2.7.6"
+navigationFragmentKtx = "2.7.6"
+material = "1.11.0"
+retrofit2KotlinxSerializationConverter = "0.8.0"
+retrofit = "2.9.0"
+roomKtx = "2.6.1"
+roomRuntime = "2.6.1"
+roomCommon = "2.6.1"
+shimmer = "0.5.0"
+targetSDK = "34"
+minimumSDK = "24"
+hilt-version ="2.49"
+timber = "5.0.1"
+
+
+[libraries]
+compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "compiler" }
+constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
+appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
+espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
+ext-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-junit" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+junit = { module = "junit:junit", version.ref = "junit" }
+ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx-version" }
+hiltAndroid = { module = "com.google.dagger:hilt-android", version.ref = "hilt-version" }
+hiltCompiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt-version" }
+library = { module = "com.github.chuckerteam.chucker:library", version.ref = "library" }
+lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
+lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
+navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationUiKtx" }
+navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
+retrofit2-kotlinx-serialization-converter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "retrofit2KotlinxSerializationConverter" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomKtx" }
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+room-common = { module = "androidx.room:room-common", version.ref = "roomCommon" }
+shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shimmer" }
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
+
+
+[plugins]
+androidLib = { id = "com.android.library", version.ref = "androidLib" }
+
